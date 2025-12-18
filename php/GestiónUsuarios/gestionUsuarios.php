@@ -11,11 +11,9 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../ConexionBD.php';
 
-// Check if it's an AJAX request or API call
 $isAjax = isset($_GET['accion']) || isset($_POST['accion']);
 
 if (!$isAjax) {
-    // Output HTML
     echo <<<'HTML'
 <!DOCTYPE html>
 <html lang="es">
@@ -462,7 +460,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 // Función para listar todos los usuarios
-function listarUsuarios() {
+function listarUsuarios()
+{
     try {
         $mysqli = abrirConexion();
 
@@ -486,7 +485,8 @@ function listarUsuarios() {
 }
 
 // Función para obtener estadísticas
-function obtenerEstadisticas() {
+function obtenerEstadisticas()
+{
     try {
         $mysqli = abrirConexion();
 
@@ -524,7 +524,8 @@ function obtenerEstadisticas() {
 }
 
 // Función para editar usuario
-function editarUsuario($input) {
+function editarUsuario($input)
+{
     try {
         $id = intval($input['id'] ?? 0);
         $nombre = trim($input['nombre_completo'] ?? '');
@@ -571,7 +572,8 @@ function editarUsuario($input) {
 }
 
 // Función para cambiar estado del usuario
-function cambiarEstado($input) {
+function cambiarEstado($input)
+{
     try {
         $id = intval($input['id'] ?? 0);
         $estado = trim($input['estado'] ?? '');
@@ -600,7 +602,8 @@ function cambiarEstado($input) {
 }
 
 // Función para eliminar usuario
-function eliminarUsuario($input) {
+function eliminarUsuario($input)
+{
     try {
         $id = intval($input['id'] ?? 0);
 

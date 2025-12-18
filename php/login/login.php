@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -40,7 +42,6 @@ try {
     $stmt->fetch();
 
     if (password_verify($contrasenna, $hash)) {
-        session_start();
         $_SESSION['user_id'] = $id;
         $_SESSION['user_name'] = $nombre;
         $_SESSION['rol'] = $rol;

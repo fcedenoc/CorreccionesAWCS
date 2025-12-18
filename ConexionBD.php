@@ -1,15 +1,17 @@
 <?php
 
-function abrirConexion(){
+function abrirConexion()
+{
 
     $host = "127.0.0.1";
     $user = "root";
-    $password = "Admin123*";
+    // $password = "Admin123*";
+    $password = "12345678910@";
     $db = "BD_PF_III25";
 
     $mysqli = new mysqli($host, $user, $password, $db);
 
-    if($mysqli->connect_errno){
+    if ($mysqli->connect_errno) {
         throw new Exception("Error de conexión: " . $mysqli->connect_errno);
     }
 
@@ -19,8 +21,9 @@ function abrirConexion(){
 
 }
 
-function cerrarConexion($mysqli){
-$mysqli->close();
+function cerrarConexion($mysqli)
+{
+    $mysqli->close();
 }
 
 ?>

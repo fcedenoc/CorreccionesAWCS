@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // formulario de denuncia
-document.getElementById('formDenuncia').addEventListener('submit', function(e) {
+document.getElementById('formDenuncia').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const formData = new FormData(this);
@@ -15,42 +15,42 @@ document.getElementById('formDenuncia').addEventListener('submit', function(e) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'OK') {
-            document.getElementById('numeroDenuncia').textContent = data.numero;
-            const modalExito = new bootstrap.Modal(document.getElementById('modalExito'));
-            modalExito.show();
-            limpiarFormulario();
-            cargarListaDenuncias(); // Recargar lista si es necesario
-        } else {
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'OK') {
+                document.getElementById('numeroDenuncia').textContent = data.numero;
+                const modalExito = new bootstrap.Modal(document.getElementById('modalExito'));
+                modalExito.show();
+                limpiarFormulario();
+                cargarListaDenuncias(); // Recargar lista si es necesario
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error || 'Error al guardar la denuncia.',
+                    confirmButtonColor: '#667eea'
+                });
+            }
+        })
+        .catch(error => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: data.error || 'Error al guardar la denuncia.',
+                text: 'Error de conexión.',
                 confirmButtonColor: '#667eea'
             });
-        }
-    })
-    .catch(error => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error de conexión.',
-            confirmButtonColor: '#667eea'
         });
-    });
 });
 
 // Obtener ubicación
 document.getElementById('btnUbicacion').addEventListener('click', obtenerUbicacion);
 
 // Vista previa de imagen
-document.getElementById('evidencia').addEventListener('change', function(e) {
+document.getElementById('evidencia').addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const preview = document.getElementById('verImagen');
             preview.src = e.target.result;
             document.getElementById('previewContainer').classList.remove('d-none');
@@ -74,7 +74,7 @@ function obtenerUbicacion() {
         btnUbicacion.textContent = 'Obteniendo...';
 
         navigator.geolocation.getCurrentPosition(
-            function(position) {
+            function (position) {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
                 ubicacionActual = `${lat}, ${lon}`;
@@ -82,7 +82,7 @@ function obtenerUbicacion() {
                 btnUbicacion.disabled = false;
                 btnUbicacion.textContent = 'Obtener Ubicación';
             },
-            function(error) {
+            function (error) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
@@ -105,24 +105,24 @@ function obtenerUbicacion() {
 
 function cargarListaDenuncias() {
     fetch('denuncias_data.php')
-    .then(response => response.json())
-    .then(denuncias => {
-        const listaDenuncias = document.getElementById('listaDenuncias');
-        listaDenuncias.innerHTML = '';
+        .then(response => response.json())
+        .then(denuncias => {
+            const listaDenuncias = document.getElementById('listaDenuncias');
+            listaDenuncias.innerHTML = '';
 
-        if (denuncias.length === 0) {
-            listaDenuncias.innerHTML = `
+            if (denuncias.length === 0) {
+                listaDenuncias.innerHTML = `
                 <div class="text-center text-muted p-4">
                     <i class="fas fa-inbox fa-3x mb-3"></i>
                     <p>No hay denuncias registradas</p>
                 </div>`;
-            return;
-        }
+                return;
+            }
 
-        denuncias.forEach(denuncia => {
-            const card = document.createElement('div');
-            card.className = 'denuncia-card';
-            card.innerHTML = `
+            denuncias.forEach(denuncia => {
+                const card = document.createElement('div');
+                card.className = 'denuncia-card';
+                card.innerHTML = `
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
                         <h5 class="mb-1">Denuncia #${denuncia.numero_denuncia}</h5>
@@ -138,10 +138,10 @@ function cargarListaDenuncias() {
                     <img src="${denuncia.evidencia_foto}" alt="Evidencia" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
                 </div>
             `;
-            listaDenuncias.appendChild(card);
+                listaDenuncias.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error cargando denuncias:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error cargando denuncias:', error);
-    });
 }

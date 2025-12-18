@@ -1,5 +1,5 @@
 //Previene el comportamiento por defecto del componente
-document.getElementById("loginForm").addEventListener("submit", async function(e) {
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const usuario = document.getElementById("usuario").value.trim();
@@ -36,6 +36,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     try {
         const respuesta = await fetch('php/login/login.php', {
             method: 'POST',
+            credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({ usuario, contrasenna })
         });

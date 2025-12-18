@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Comunidad Segura</title>
+    <title>Servicios - Mi Comunidad Segura</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -23,9 +23,9 @@ if (!isset($_SESSION['user_id'])) {
         <div class="logo">Mi Comunidad Segura</div>
         <button class="menu-toggle"><i class="bi bi-list"></i></button>
         <ul class="nav-links">
-            <li><a href="index.php" class="active">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <li><a href="reportes.php">Reportes</a></li>
-            <li><a href="servicios.php">Servicios</a></li>
+            <li><a href="servicios.php" class="active">Servicios</a></li>
             <li><a href="denuncias.php">Mi Denuncia</a></li>
             <li><a href="contacto.php">Contacto</a></li>
             <li><a href="login.php" onclick="logout()">Cerrar Sesión</a></li>
@@ -35,25 +35,23 @@ if (!isset($_SESSION['user_id'])) {
     </nav>
 
     <main id="content">
-        <section id="inicio" class="page active" style="display: block;">
-            <h1>Bienvenido a <span class="highlight">Mi Comunidad Segura</span></h1>
-            <p>Una plataforma que conecta a los ciudadanos con su entorno para mejorar la seguridad y convivencia.</p>
-
+        <section id="servicios" class="page active" style="display: block;">
+            <h2>Nuestros Servicios</h2>
             <div class="cards">
                 <div class="card">
-                    <i class="bi bi-shield-check icon"></i>
-                    <h3>Reportes Ciudadanos</h3>
-                    <p>Comparte incidencias en tu zona y ayuda a mantener tu comunidad informada.</p>
+                    <i class="bi bi-chat-dots icon"></i>
+                    <h3>Canal de Denuncias</h3>
+                    <p>Envía reportes con evidencia visual y ubicación exacta.</p>
                 </div>
                 <div class="card">
-                    <i class="bi bi-people icon"></i>
-                    <h3>Participación Activa</h3>
-                    <p>Únete a tus vecinos para construir un entorno más seguro y colaborativo.</p>
+                    <i class="bi bi-bar-chart icon"></i>
+                    <h3>Estadísticas</h3>
+                    <p>Accede a datos actualizados sobre seguridad y convivencia.</p>
                 </div>
                 <div class="card">
-                    <i class="bi bi-geo-alt icon"></i>
-                    <h3>Mapa de Seguridad</h3>
-                    <p>Visualiza los reportes más recientes en tiempo real.</p>
+                    <i class="bi bi-telephone icon"></i>
+                    <h3>Atención Comunitaria</h3>
+                    <p>Contacta con las autoridades o representantes locales.</p>
                 </div>
             </div>
         </section>

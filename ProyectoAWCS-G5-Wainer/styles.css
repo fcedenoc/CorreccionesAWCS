@@ -2,7 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     padding: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #E6EEF2;
 }
 
 .container {
@@ -19,7 +19,7 @@ body {
 }
 
 .complaint-card h3 {
-    color: #667eea;
+    color: #00559C;
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -44,8 +44,8 @@ body {
 }
 
 .nav-tabs .nav-link.active {
-    color: #667eea;
-    border-bottom: 3px solid #667eea;
+    color: #00559C;
+    border-bottom: 3px solid #00559C;
     font-weight: bold;
 }
 
@@ -56,19 +56,19 @@ body {
 
 .form-control:focus,
 .form-select:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    border-color: #4FA3D1;
+    box-shadow: 0 0 0 0.2rem rgba(79, 163, 209, 0.25);
 }
 
 .btn-primary {
-    background-color: #667eea;
-    border-color: #667eea;
+    background-color: #00559C;
+    border-color: #00559C;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #5a6fd6;
-    border-color: #5a6fd6;
+    background-color: #4FA3D1;
+    border-color: #4FA3D1;
 }
 
 .denuncia-card {

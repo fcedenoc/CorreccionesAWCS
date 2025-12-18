@@ -3,8 +3,8 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
-include 'ConexionBD.php';
 }
+include 'ConexionBD.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,14 +12,32 @@ include 'ConexionBD.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denuncias Ciudadanas</title>
+    <title>Denuncias Ciudadanas | Mi Comunidad Segura</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="container">
+    <nav class="navbar">
+        <div class="logo">Mi Comunidad Segura</div>
+        <button class="menu-toggle"><i class="bi bi-list"></i></button>
+        <ul class="nav-links">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="reportes.php">Reportes</a></li>
+            <li><a href="servicios.php">Servicios</a></li>
+            <li><a href="denuncias.php" class="active">Mi Denuncia</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
+            <li><a href="login.php" onclick="logout()">Cerrar Sesión</a></li>
+            <li><button id="themeToggle" class="theme-btn"><i class="bi bi-sun"></i></button></li>
+            <li><button id="adminToggle" class="admin-btn"><i class="bi bi-toggle-off"></i></button></li>
+        </ul>
+    </nav>
+
+    <main id="content">
+        <div class="container">
         <div class="complaint-card">
             <h3>Sistema de Denuncias Ciudadanas</h3>
             <a href="reportes.php" class="btn btn-primary mb-3">Ver Reportes</a>
@@ -34,7 +52,7 @@ include 'ConexionBD.php';
             </nav>
 
             <div class="tab-content" id="nav-tabContent">
-                
+
                 <div class="tab-pane fade show active" id="nav-nueva" role="tabpanel" aria-labelledby="nav-nueva-tab">
                     <form id="formDenuncia" class="mt-4">
                         <div class="mb-3">
@@ -64,8 +82,8 @@ include 'ConexionBD.php';
                         <div class="mb-3">
                             <label for="ubicacion" class="form-label">Ubicación</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="ubicacion" name="ubicacion" required readonly
-                                    placeholder="Haga clic en obtener ubicación">
+                                <input type="text" class="form-control" id="ubicacion" name="ubicacion" required
+                                    readonly placeholder="Haga clic en obtener ubicación">
                                 <button class="btn btn-outline-secondary" type="button" id="btnUbicacion">
                                     Obtener Ubicación
                                 </button>
@@ -74,9 +92,11 @@ include 'ConexionBD.php';
 
                         <div class="mb-3">
                             <label for="evidencia" class="form-label">Evidencia Fotográfica</label>
-                            <input class="form-control" type="file" id="evidencia" name="evidencia" accept="image/*" required>
+                            <input class="form-control" type="file" id="evidencia" name="evidencia" accept="image/*"
+                                required>
                             <div id="previewContainer" class="mt-2 d-none">
-                                <img id="verImagen" class="img-fluid rounded" style="max-height: 200px;" src="" alt="Vista previa">
+                                <img id="verImagen" class="img-fluid rounded" style="max-height: 200px;" src=""
+                                    alt="Vista previa">
                             </div>
                         </div>
 
@@ -84,15 +104,19 @@ include 'ConexionBD.php';
                     </form>
                 </div>
 
-                
+
                 <div class="tab-pane fade" id="nav-lista" role="tabpanel" aria-labelledby="nav-lista-tab">
                     <div id="listaDenuncias" class="mt-4">
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Mi Comunidad Segura — Todos los derechos reservados</p>
+    </footer>
 
     <div class="modal fade" id="modalExito" tabindex="-1" aria-labelledby="modalExitoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -120,6 +144,7 @@ include 'ConexionBD.php';
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
     <script src="Scripts.js"></script>
 </body>
 
