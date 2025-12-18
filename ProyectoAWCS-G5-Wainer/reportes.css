@@ -1,0 +1,91 @@
+:root {
+    --azul-principal: #00559C;
+    --azul-suave: #4FA3D1;
+    --gris-claro: #E6EEF2;
+    --gris-oscuro: #333A40;
+    --amarillo-alerta: #FFC107;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--gris-oscuro);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--azul-principal);
+    padding: 1rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a.active {
+    text-decoration: underline;
+}
+
+.container {
+    padding: 2rem;
+}
+
+.filtros {
+    background-color: var(--azul-suave);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.filtros input[type="date"] {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.filtros button {
+    padding: 0.5rem 1rem;
+    background-color: var(--azul-principal);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filtros button:hover {
+    background-color: var(--gris-oscuro);
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.chart-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
