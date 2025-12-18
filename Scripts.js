@@ -22,7 +22,7 @@ document.getElementById('formDenuncia').addEventListener('submit', function (e) 
                 const modalExito = new bootstrap.Modal(document.getElementById('modalExito'));
                 modalExito.show();
                 limpiarFormulario();
-                cargarListaDenuncias(); // Recargar lista si es necesario
+                cargarListaDenuncias();
             } else {
                 Swal.fire({
                     icon: 'error',

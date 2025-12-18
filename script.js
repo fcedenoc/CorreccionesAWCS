@@ -20,24 +20,20 @@ const adminMenu = `
     <li><button id="adminToggle" class="admin-btn"><i class="bi bi-toggle-on"></i></button></li>
 `;
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeScripts);
+} else {
+    initializeScripts();
 }
 
-attachEventListeners();
+function initializeScripts() {
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+    }
 
-const adminToggleBtn = document.getElementById('adminToggle');
-if (adminToggleBtn) {
-    adminToggleBtn.addEventListener('click', () => {
-
-        if (window.location.pathname.includes('panelAdmin.php') || window.location.pathname.includes('gestionUsuarios.php')) {
-            window.location.href = 'index.php';
-        } else {
-            window.location.href = 'panelAdmin.php';
-        }
-    });
+    attachEventListeners();
 }
 
 function attachEventListeners() {
@@ -58,6 +54,20 @@ function attachEventListeners() {
         });
     }
 
+    const adminToggle = document.getElementById('adminToggle');
+    if (adminToggle) {
+        adminToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Admin toggle clicked');
+            const currentUrl = window.location.href;
+            if (currentUrl.includes('panelAdmin.php') || currentUrl.includes('gestionUsuarios.php')) {
+                window.location.href = 'index.php';
+            } else {
+                window.location.href = 'panelAdmin.php';
+            }
+        });
+    }
+
     const accordions = document.querySelectorAll('.accordion-item');
     accordions.forEach(item => {
         const header = item.querySelector('.accordion-header');
@@ -67,7 +77,8 @@ function attachEventListeners() {
             });
         }
     });
+}
 
-    function logout() {
-        window.location.href = 'login.php';
-    }
+function logout() {
+    window.location.href = 'login.php';
+}
